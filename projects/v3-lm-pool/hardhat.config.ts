@@ -18,6 +18,13 @@ const bscMainnet: NetworkUserConfig = {
   accounts: [process.env.KEY_MAINNET!],
 }
 
+const zkkatana: NetworkUserConfig = {
+  url: 'https://rpc.startale.com/zkatana/',
+  chainId: 1261120,
+  accounts: [process.env.KEY_TESTNET!],
+}
+
+
 const goerli: NetworkUserConfig = {
   url: 'https://rpc.ankr.com/eth_goerli',
   chainId: 5,
@@ -38,7 +45,7 @@ const config: HardhatUserConfig = {
     hardhat: {},
     ...(process.env.KEY_TESTNET && { bscTestnet }),
     ...(process.env.KEY_MAINNET && { bscMainnet }),
-    ...(process.env.KEY_GOERLI && { goerli }),
+    ...(process.env.KEY_TESTNET && { zkkatana }),
     ...(process.env.KEY_ETH && { eth }),
   },
   etherscan: {

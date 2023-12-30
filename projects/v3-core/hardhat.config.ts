@@ -65,7 +65,7 @@ const bscMainnet: NetworkUserConfig = {
 const zkkatana: NetworkUserConfig = {
   url: 'https://rpc.startale.com/zkatana/',
   chainId: 1261120,
-  accounts: [process.env.KEY_MAINNET!],
+  accounts: [process.env.KEY_TESTNET!],
 }
 
 const goerli: NetworkUserConfig = {

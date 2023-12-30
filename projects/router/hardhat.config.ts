@@ -52,6 +52,12 @@ const eth: NetworkUserConfig = {
   accounts: [process.env.KEY_ETH!],
 }
 
+const zkkatana: NetworkUserConfig = {
+  url: 'https://rpc.startale.com/zkatana/',
+  chainId: 1261120,
+  accounts: [process.env.KEY_TESTNET!],
+}
+
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
   networks: {
@@ -62,7 +68,7 @@ const config: HardhatUserConfig = {
     },
     ...(process.env.KEY_TESTNET && { bscTestnet }),
     ...(process.env.KEY_MAINNET && { bscMainnet }),
-    ...(process.env.KEY_GOERLI && { goerli }),
+    ...(process.env.KEY_TESTNET && { zkkatana }),
     ...(process.env.KEY_ETH && { eth }),
     // goerli: goerli,
     // mainnet: bscMainnet,

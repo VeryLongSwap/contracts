@@ -75,15 +75,20 @@ const eth: NetworkUserConfig = {
   accounts: [process.env.KEY_ETH!],
 }
 
+const zkkatana: NetworkUserConfig = {
+  url: 'https://rpc.startale.com/zkatana/',
+  chainId: 1261120,
+  accounts: [process.env.KEY_TESTNET!],
+}
+
+
 export default {
   networks: {
     hardhat: {
       allowUnlimitedContractSize: true,
     },
-    ...(process.env.KEY_TESTNET && { bscTestnet }),
+    ...(process.env.KEY_TESTNET && { zkkatana }),
     ...(process.env.KEY_MAINNET && { bscMainnet }),
-    ...(process.env.KEY_GOERLI && { goerli }),
-    ...(process.env.KEY_ETH && { eth }),
     // mainnet: bscMainnet,
   },
   etherscan: {
