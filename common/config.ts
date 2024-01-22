@@ -8,7 +8,7 @@ export const configs = {
     cake: '0x152649eA73beAb28c5b49B26eb48f7EAD6d4c898',
     smartRouterHelper: '0xdAecee3C08e953Bd5f89A5Cc90ac560413d709E3',
   },
-  zkkatana: {
+  zkatana: {
     WNATIVE: '0x3362c76725702817bF3dEEf8a4D39d02752a27f4',
     nativeCurrencyLabel: 'ETH',
     v2Factory: '0x0000000000000000000000000000000000000000',
