@@ -51,32 +51,18 @@ const DEFAULT_COMPILER_SETTINGS = {
   },
 }
 
-const bscTestnet: NetworkUserConfig = {
-  url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-  chainId: 97,
-  accounts: [process.env.KEY_TESTNET!],
-}
-
 const bscMainnet: NetworkUserConfig = {
   url: 'https://bsc-dataseed.binance.org/',
   chainId: 56,
   accounts: [process.env.KEY_MAINNET!],
 }
 
-const goerli: NetworkUserConfig = {
-  url: 'https://rpc.ankr.com/eth_goerli',
-  chainId: 5,
-  accounts: [process.env.KEY_GOERLI!],
-}
 
-const eth: NetworkUserConfig = {
-  url: 'https://eth.llamarpc.com',
-  chainId: 1,
-  accounts: [process.env.KEY_ETH!],
-}
 
-const zkkatana: NetworkUserConfig = {
-  url: 'https://rpc.startale.com/zkatana/',
+
+
+const zkatana: NetworkUserConfig = {
+  url: 'https://zkatana.blockscout.com/api',
   chainId: 1261120,
   accounts: [process.env.KEY_TESTNET!],
 }
@@ -87,7 +73,7 @@ export default {
     hardhat: {
       allowUnlimitedContractSize: true,
     },
-    ...(process.env.KEY_TESTNET && { zkkatana }),
+    ...(process.env.KEY_TESTNET && { zkatana }),
     ...(process.env.KEY_MAINNET && { bscMainnet }),
     // mainnet: bscMainnet,
   },

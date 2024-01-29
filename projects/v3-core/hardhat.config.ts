@@ -8,19 +8,7 @@ import 'dotenv/config'
 import 'solidity-docgen'
 require('dotenv').config({ path: require('find-config')('.env') })
 
-const LOW_OPTIMIZER_COMPILER_SETTINGS = {
-  version: '0.7.6',
-  settings: {
-    evmVersion: 'istanbul',
-    optimizer: {
-      enabled: true,
-      runs: 2_000,
-    },
-    metadata: {
-      bytecodeHash: 'none',
-    },
-  },
-}
+
 
 const LOWEST_OPTIMIZER_COMPILER_SETTINGS = {
   version: '0.7.6',
