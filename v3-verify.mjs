@@ -6,6 +6,7 @@ const networks = {
   goerli: 'goerli',
   bscMainnet: 'bscMainnet',
   bscTestnet: 'bscTestnet',
+  zkatana: "zkatana",
   hardhat: 'hardhat',
 }
 
