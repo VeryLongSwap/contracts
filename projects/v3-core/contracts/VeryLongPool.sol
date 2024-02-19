@@ -27,7 +27,7 @@ import './interfaces/callback/IPancakeV3FlashCallback.sol';
 
 import '@pancakeswap/v3-lm-pool/contracts/interfaces/IPancakeV3LmPool.sol';
 
-contract PancakeV3Pool is IPancakeV3Pool {
+contract VeryLongPool is IPancakeV3Pool {
     using LowGasSafeMath for uint256;
     using LowGasSafeMath for int256;
     using SafeCast for uint256;

@@ -28,7 +28,7 @@ const createFixtureLoader = waffle.createFixtureLoader
 
 type ThenArg<T> = T extends PromiseLike<infer U> ? U : T
 
-describe('PancakeV3Pool', () => {
+describe('VeryLongPool', () => {
   let wallet: Wallet, other: Wallet
 
   let token0: TestERC20

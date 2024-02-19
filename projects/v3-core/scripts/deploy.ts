@@ -6,7 +6,7 @@ import fs from 'fs'
 type ContractJson = { abi: any; bytecode: string }
 const artifacts: { [name: string]: ContractJson } = {
   // eslint-disable-next-line global-require
-  PancakeV3PoolDeployer: require('../artifacts/contracts/PancakeV3PoolDeployer.sol/PancakeV3PoolDeployer.json'),
+  VeryLongPoolDeployer: require('../artifacts/contracts/VeryLongPoolDeployer.sol/VeryLongPoolDeployer.json'),
   // eslint-disable-next-line global-require
   VeryLongFactory: require('../artifacts/contracts/VeryLongFactory.sol/VeryLongFactory.json'),
 }
@@ -18,20 +18,20 @@ async function main() {
 
   let pancakeV3PoolDeployer_address = ''
   let pancakeV3PoolDeployer
-  const PancakeV3PoolDeployer = new ContractFactory(
-    artifacts.PancakeV3PoolDeployer.abi,
-    artifacts.PancakeV3PoolDeployer.bytecode,
+  const VeryLongPoolDeployer = new ContractFactory(
+    artifacts.VeryLongPoolDeployer.abi,
+    artifacts.VeryLongPoolDeployer.bytecode,
     owner
   )
   if (!pancakeV3PoolDeployer_address) {
-    pancakeV3PoolDeployer = await PancakeV3PoolDeployer.deploy()
+    pancakeV3PoolDeployer = await VeryLongPoolDeployer.deploy()
 
     pancakeV3PoolDeployer_address = pancakeV3PoolDeployer.address
     console.log('pancakeV3PoolDeployer', pancakeV3PoolDeployer_address)
   } else {
     pancakeV3PoolDeployer = new ethers.Contract(
       pancakeV3PoolDeployer_address,
-      artifacts.PancakeV3PoolDeployer.abi,
+      artifacts.VeryLongPoolDeployer.abi,
       owner
     )
   }
@@ -58,7 +58,7 @@ async function main() {
 
   const contracts = {
     VeryLongFactory: pancakeV3Factory_address,
-    PancakeV3PoolDeployer: pancakeV3PoolDeployer_address,
+    VeryLongPoolDeployer: pancakeV3PoolDeployer_address,
   }
 
   fs.writeFileSync(`./deployments/${networkName}.json`, JSON.stringify(contracts, null, 2))

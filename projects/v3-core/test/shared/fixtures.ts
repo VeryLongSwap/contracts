@@ -3,7 +3,7 @@ import { ethers } from 'hardhat'
 import { MockTimePancakeV3Pool } from '../../typechain-types/contracts/test/MockTimePancakeV3Pool'
 import { TestERC20 } from '../../typechain-types/contracts/test/TestERC20'
 import { VeryLongFactory } from '../../typechain-types/contracts/VeryLongFactory'
-import { PancakeV3PoolDeployer } from '../../typechain-types/contracts/PancakeV3PoolDeployer'
+import { VeryLongPoolDeployer } from '../../typechain-types/contracts/VeryLongPoolDeployer'
 import { TestPancakeV3Callee } from '../../typechain-types/contracts/test/TestPancakeV3Callee'
 import { TestPancakeV3Router } from '../../typechain-types/contracts/test/TestPancakeV3Router'
 import { MockTimePancakeV3PoolDeployer } from '../../typechain-types/contracts/test/MockTimePancakeV3PoolDeployer'
@@ -16,7 +16,7 @@ interface FactoryFixture {
 }
 
 interface DeployerFixture {
-  deployer: PancakeV3PoolDeployer
+  deployer: VeryLongPoolDeployer
 }
 
 async function factoryFixture(): Promise<FactoryFixture> {
@@ -26,8 +26,8 @@ async function factoryFixture(): Promise<FactoryFixture> {
   return { factory }
 }
 async function deployerFixture(): Promise<DeployerFixture> {
-  const deployerFactory = await ethers.getContractFactory('PancakeV3PoolDeployer')
-  const deployer = (await deployerFactory.deploy()) as PancakeV3PoolDeployer
+  const deployerFactory = await ethers.getContractFactory('VeryLongPoolDeployer')
+  const deployer = (await deployerFactory.deploy()) as VeryLongPoolDeployer
   return { deployer }
 }
 
