@@ -57,12 +57,8 @@ const bscMainnet: NetworkUserConfig = {
   accounts: [process.env.KEY_MAINNET!],
 }
 
-
-
-
-
 const zkatana: NetworkUserConfig = {
-  url: 'https://zkatana.blockscout.com/api',
+  url: 'https://rpc.startale.com/zkatana',
   chainId: 1261120,
   accounts: [process.env.KEY_TESTNET!],
 }
