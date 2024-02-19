@@ -1,8 +1,6 @@
 import bn from 'bignumber.js'
-import { Contract, ContractFactory, utils, BigNumber } from 'ethers'
+import { ContractFactory, utils, BigNumber } from 'ethers'
 import { ethers, upgrades, network } from 'hardhat'
-import { linkLibraries } from '../util/linkLibraries'
-import { tryVerify } from '@pancakeswap/common/verify'
 import { configs } from '@pancakeswap/common/config'
 import fs from 'fs'
 
@@ -40,17 +38,6 @@ function encodePriceSqrt(reserve1: any, reserve0: any) {
   )
 }
 
-function isAscii(str: string): boolean {
-  return /^[\x00-\x7F]*$/.test(str)
-}
-function asciiStringToBytes32(str: string): string {
-  if (str.length > 32 || !isAscii(str)) {
-    throw new Error('Invalid label, must be less than 32 characters')
-  }
-
-  return '0x' + Buffer.from(str, 'ascii').toString('hex').padEnd(64, '0')
-}
-
 async function main() {
   const [owner] = await ethers.getSigners()
   const networkName = network.name
@@ -62,7 +49,7 @@ async function main() {
     throw new Error(`No config found for network ${networkName}`)
   }
 
-  const deployedContracts = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
+  const deployedContracts = await import(`@verylongswap/core/deployments/${networkName}.json`)
 
   const pancakeV3PoolDeployer_address = deployedContracts.PancakeV3PoolDeployer
   const pancakeV3Factory_address = deployedContracts.PancakeV3Factory
