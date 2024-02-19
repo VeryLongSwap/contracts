@@ -12,7 +12,7 @@ async function main() {
 
   // Verify pancakeV3Factory
   console.log('Verify pancakeV3Factory')
-  await verifyContract(deployedContracts.PancakeV3Factory, [deployedContracts.PancakeV3PoolDeployer])
+  await verifyContract(deployedContracts.VeryLongFactory, [deployedContracts.PancakeV3PoolDeployer])
   await sleep(10000)
 }
 

@@ -1,7 +1,7 @@
 import { Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
 import { TestERC20 } from '../typechain-types/contracts/test/TestERC20'
-import { PancakeV3Factory } from '../typechain-types/contracts/PancakeV3Factory'
+import { VeryLongFactory } from '../typechain-types/contracts/VeryLongFactory'
 import { MockTimePancakeV3Pool } from '../typechain-types/contracts/test/MockTimePancakeV3Pool'
 import { expect } from './shared/expect'
 
@@ -34,7 +34,7 @@ describe('PancakeV3Pool', () => {
   let token0: TestERC20
   let token1: TestERC20
   let token2: TestERC20
-  let factory: PancakeV3Factory
+  let factory: VeryLongFactory
   let pool0: MockTimePancakeV3Pool
   let pool1: MockTimePancakeV3Pool
 

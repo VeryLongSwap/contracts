@@ -1,6 +1,6 @@
 import { Wallet } from 'ethers'
 import { ethers, waffle } from 'hardhat'
-import { PancakeV3Factory } from '../typechain-types/contracts/PancakeV3Factory'
+import { VeryLongFactory } from '../typechain-types/contracts/VeryLongFactory'
 import { PancakeV3PoolDeployer } from '../typechain-types/contracts/PancakeV3PoolDeployer'
 import { expect } from './shared/expect'
 import snapshotGasCost from './shared/snapshotGasCost'
@@ -16,20 +16,20 @@ const TEST_ADDRESSES: [string, string] = [
 
 const createFixtureLoader = waffle.createFixtureLoader
 
-describe('PancakeV3Factory', () => {
+describe('VeryLongFactory', () => {
   let wallet: Wallet, other: Wallet
 
   let deployer: PancakeV3PoolDeployer
-  let factory: PancakeV3Factory
+  let factory: VeryLongFactory
   let poolBytecode: string
   const fixture = async () => {
     const deployerFactory = await ethers.getContractFactory('PancakeV3PoolDeployer')
-    const factoryFactory = await ethers.getContractFactory('PancakeV3Factory')
+    const factoryFactory = await ethers.getContractFactory('VeryLongFactory')
     const deployer_ = (await deployerFactory.deploy()) as PancakeV3PoolDeployer
-    const factory_ = (await factoryFactory.deploy(deployer_.address)) as PancakeV3Factory
+    const factory_ = (await factoryFactory.deploy(deployer_.address)) as VeryLongFactory
 
     await deployer_.setFactoryAddress(factory_.address)
-    return [factory_, deployer_] as [PancakeV3Factory, PancakeV3PoolDeployer]
+    return [factory_, deployer_] as [VeryLongFactory, PancakeV3PoolDeployer]
   }
 
   let loadFixture: ReturnType<typeof createFixtureLoader>

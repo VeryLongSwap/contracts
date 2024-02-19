@@ -9,14 +9,14 @@ repository.
 In order to deploy this code to a local testnet, you should install the npm package
 `@pancakeswap/v3-core`
 and import the factory bytecode located at
-`@pancakeswap/v3-core/artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json`.
+`@pancakeswap/v3-core/artifacts/contracts/VeryLongFactory.sol/VeryLongFactory.json`.
 For example:
 
 ```typescript
 import {
   abi as FACTORY_ABI,
   bytecode as FACTORY_BYTECODE,
-} from '@pancakeswap/v3-core/artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json'
+} from '@pancakeswap/v3-core/artifacts/contracts/VeryLongFactory.sol/VeryLongFactory.json'
 
 // deploy the bytecode
 ```

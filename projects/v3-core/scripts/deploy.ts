@@ -8,7 +8,7 @@ const artifacts: { [name: string]: ContractJson } = {
   // eslint-disable-next-line global-require
   PancakeV3PoolDeployer: require('../artifacts/contracts/PancakeV3PoolDeployer.sol/PancakeV3PoolDeployer.json'),
   // eslint-disable-next-line global-require
-  PancakeV3Factory: require('../artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json'),
+  VeryLongFactory: require('../artifacts/contracts/VeryLongFactory.sol/VeryLongFactory.json'),
 }
 
 async function main() {
@@ -39,17 +39,17 @@ async function main() {
   let pancakeV3Factory_address = ''
   let pancakeV3Factory
   if (!pancakeV3Factory_address) {
-    const PancakeV3Factory = new ContractFactory(
-      artifacts.PancakeV3Factory.abi,
-      artifacts.PancakeV3Factory.bytecode,
+    const VeryLongFactory = new ContractFactory(
+      artifacts.VeryLongFactory.abi,
+      artifacts.VeryLongFactory.bytecode,
       owner
     )
-    pancakeV3Factory = await PancakeV3Factory.deploy(pancakeV3PoolDeployer_address)
+    pancakeV3Factory = await VeryLongFactory.deploy(pancakeV3PoolDeployer_address)
 
     pancakeV3Factory_address = pancakeV3Factory.address
     console.log('pancakeV3Factory', pancakeV3Factory_address)
   } else {
-    pancakeV3Factory = new ethers.Contract(pancakeV3Factory_address, artifacts.PancakeV3Factory.abi, owner)
+    pancakeV3Factory = new ethers.Contract(pancakeV3Factory_address, artifacts.VeryLongFactory.abi, owner)
   }
 
   // Set FactoryAddress for pancakeV3PoolDeployer.
@@ -57,7 +57,7 @@ async function main() {
 
 
   const contracts = {
-    PancakeV3Factory: pancakeV3Factory_address,
+    VeryLongFactory: pancakeV3Factory_address,
     PancakeV3PoolDeployer: pancakeV3PoolDeployer_address,
   }
 

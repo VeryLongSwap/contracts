@@ -14,7 +14,7 @@
   "files": [
     "contracts/interfaces",
     "contracts/libraries",
-    "artifacts/contracts/PancakeV3Factory.sol/PancakeV3Factory.json",
+    "artifacts/contracts/VeryLongFactory.sol/VeryLongFactory.json",
     "artifacts/contracts/PancakeV3Pool.sol/PancakeV3Pool.json",
     "artifacts/contracts/interfaces/**/*.json",
     "!artifacts/contracts/interfaces/**/*.dbg.json"
