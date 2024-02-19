@@ -25,7 +25,7 @@ import './interfaces/callback/IPancakeV3MintCallback.sol';
 import './interfaces/callback/IPancakeV3SwapCallback.sol';
 import './interfaces/callback/IPancakeV3FlashCallback.sol';
 
-import '@pancakeswap/v3-lm-pool/contracts/interfaces/IPancakeV3LmPool.sol';
+import {IPancakeV3LmPool} from './interfaces/IPancakeV3LmPool.sol';
 
 contract VeryLongPool is IPancakeV3Pool {
     using LowGasSafeMath for uint256;
