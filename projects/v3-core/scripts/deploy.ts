@@ -55,10 +55,18 @@ async function main() {
   // Set FactoryAddress for pancakeV3PoolDeployer.
   await pancakeV3PoolDeployer.setFactoryAddress(pancakeV3Factory_address);
 
+  const OutputCodeHash = await ethers.getContractFactory("OutputCodeHash");
+  const outputCodeHash = await OutputCodeHash.deploy();
+  console.log("OutputCodeHash", outputCodeHash.address);
+
+  const hash = await outputCodeHash.getInitCodeHash();
+  console.log("hash: ", hash);
 
   const contracts = {
     VeryLongFactory: pancakeV3Factory_address,
     VeryLongPoolDeployer: pancakeV3PoolDeployer_address,
+    InitCodeHashAddress: outputCodeHash.address,
+    InitCodeHash: hash,
   }
 
   fs.writeFileSync(`./deployments/${networkName}.json`, JSON.stringify(contracts, null, 2))
