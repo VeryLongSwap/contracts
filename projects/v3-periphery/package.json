@@ -28,6 +28,7 @@
     "@openzeppelin/contracts-upgradeable": "3.4.2-solc-0.7",
     "@uniswap/lib": "^4.0.1-alpha",
     "@uniswap/v2-core": "1.0.1",
+    "@verylongswap/core": "^1.0.9",
     "base64-sol": "1.0.1"
   },
   "devDependencies": {
