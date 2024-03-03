@@ -38,15 +38,10 @@ const DEFAULT_COMPILER_SETTINGS = {
   },
 }
 
-const bscTestnet: NetworkUserConfig = {
-  url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-  chainId: 97,
-  accounts: [process.env.KEY_TESTNET!],
-}
 
-const bscMainnet: NetworkUserConfig = {
-  url: 'https://bsc-dataseed.binance.org/',
-  chainId: 56,
+const astarzkevm: NetworkUserConfig = {
+  url: 'https://rpc.startale.com/astar-zkevm/',
+  chainId: 3776,
   accounts: [process.env.KEY_MAINNET!],
 }
 
@@ -56,29 +51,14 @@ const zkatana: NetworkUserConfig = {
   accounts: [process.env.KEY_TESTNET!],
 }
 
-const goerli: NetworkUserConfig = {
-  url: 'https://rpc.ankr.com/eth_goerli',
-  chainId: 5,
-  accounts: [process.env.KEY_GOERLI!],
-}
-
-const eth: NetworkUserConfig = {
-  url: 'https://eth.llamarpc.com',
-  chainId: 1,
-  accounts: [process.env.KEY_ETH!],
-}
 
 export default {
   networks: {
     hardhat: {
       allowUnlimitedContractSize: true,
     },
-    ...(process.env.KEY_TESTNET && { bscTestnet }),
     ...(process.env.KEY_TESTNET && { zkatana }),
-    ...(process.env.KEY_MAINNET && { bscMainnet }),
-    ...(process.env.KEY_GOERLI && { goerli }),
-    ...(process.env.KEY_ETH && { eth }),
-    // mainnet: bscMainnet,
+    ...(process.env.KEY_MAINNET && { astarzkevm }),
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
@@ -86,7 +66,6 @@ export default {
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],
     overrides: {
-      'contracts/VeryLongPoolDeployer.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
       'contracts/VeryLongPoolDeployer.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
       'contracts/test/OutputCodeHash.sol': LOWEST_OPTIMIZER_COMPILER_SETTINGS,
     },
