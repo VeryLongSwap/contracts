@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "compile": "npx hardhat compile",
-    "deploy:katana": "hardhat run scripts/deploy2.ts --network zkatana",
+    "deploy:zkatana": "hardhat run scripts/deploy2.ts --network zkatana",
+    "deploy:astarzkevm": "hardhat run scripts/deploy2.ts --network astarzkevm",
     "test": "echo 'skip'",
     "test:coverage": "npx hardhat coverage",
     "test:size-contracts": "npx hardhat size-contracts"

@@ -1,11 +1,15 @@
 import { ethers, network } from 'hardhat'
-import { configs } from '@pancakeswap/common/config'
 import { writeFileSync } from 'fs'
 
 async function main() {
   // Remember to update the init code hash in SC for different chains before deploying
   const networkName = network.name
-  const config = configs[networkName as keyof typeof configs]
+  const config = {
+    v2Factory: '0x0000000000000000000000000000000000000000',
+    stableFactory: '0x0000000000000000000000000000000000000000',
+    stableInfo: '0x0000000000000000000000000000000000000000',
+    WNATIVE: '0x22f92e5a6219bEf9Aa445EBAfBeB498d2EAdBF01',
+  }
   if (!config) {
     throw new Error(`No config found for network ${networkName}`)
   }
@@ -65,8 +69,6 @@ async function main() {
   })
   const quoterV2 = await QuoterV2.deploy(pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE)
   console.log('QuoterV2 deployed to:', quoterV2.address)
-
-  // await tryVerify(quoterV2, [pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE])
 
   /** TokenValidator */
   const TokenValidator = await ethers.getContractFactory('TokenValidator', {

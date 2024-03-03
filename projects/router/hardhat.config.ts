@@ -10,23 +10,6 @@ import '@nomiclabs/hardhat-etherscan'
 import 'solidity-docgen'
 require('dotenv').config({ path: require('find-config')('.env') })
 
-const bscTestnet: NetworkUserConfig = {
-  url: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-  chainId: 97,
-  accounts: [process.env.KEY_TESTNET!],
-}
-
-const bscMainnet: NetworkUserConfig = {
-  url: 'https://bsc-dataseed.binance.org/',
-  chainId: 56,
-  accounts: [process.env.KEY_MAINNET!],
-}
-
-const eth: NetworkUserConfig = {
-  url: 'https://eth.llamarpc.com',
-  chainId: 1,
-  accounts: [process.env.KEY_ETH!],
-}
 
 const zkatana: NetworkUserConfig = {
   url: 'https://rpc.startale.com/zkatana/',
@@ -34,20 +17,19 @@ const zkatana: NetworkUserConfig = {
   accounts: [process.env.KEY_TESTNET!],
 }
 
+
+const astarzkevm: NetworkUserConfig = {
+  url: 'https://rpc.startale.com/astar-zkevm/',
+  chainId: 3776,
+  accounts: [process.env.KEY_MAINNET!],
+}
+
+
 const config: HardhatUserConfig = {
   defaultNetwork: 'hardhat',
   networks: {
-    hardhat: {
-      forking: {
-        url: bscTestnet.url || '',
-      },
-    },
-    ...(process.env.KEY_TESTNET && { bscTestnet }),
-    ...(process.env.KEY_MAINNET && { bscMainnet }),
+    ...(process.env.KEY_MAINNET && { astarzkevm }),
     ...(process.env.KEY_TESTNET && { zkatana }),
-    ...(process.env.KEY_ETH && { eth }),
-    // goerli: goerli,
-    // mainnet: bscMainnet,
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY || '',
