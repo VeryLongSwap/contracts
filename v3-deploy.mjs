@@ -2,12 +2,8 @@
 // import 'zx/globals'
 
 const networks = {
-  eth: 'eth',
-  goerli: 'goerli',
   zkatana:"zkatana",
-  bscMainnet: 'bscMainnet',
-  bscTestnet: 'bscTestnet',
-  hardhat: 'hardhat',
+  astarzkevm: 'astarzkevm',
 }
 
 let network = process.env.NETWORK
