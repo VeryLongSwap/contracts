@@ -51,9 +51,9 @@ const DEFAULT_COMPILER_SETTINGS = {
   },
 }
 
-const bscMainnet: NetworkUserConfig = {
-  url: 'https://bsc-dataseed.binance.org/',
-  chainId: 56,
+const astarzkevm: NetworkUserConfig = {
+  url: 'https://rpc.startale.com/astar-zkevm/',
+  chainId: 3776,
   accounts: [process.env.KEY_MAINNET!],
 }
 
@@ -70,8 +70,7 @@ export default {
       allowUnlimitedContractSize: true,
     },
     ...(process.env.KEY_TESTNET && { zkatana }),
-    ...(process.env.KEY_MAINNET && { bscMainnet }),
-    // mainnet: bscMainnet,
+    ...(process.env.KEY_MAINNET && { astarzkevm }),
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY || '',

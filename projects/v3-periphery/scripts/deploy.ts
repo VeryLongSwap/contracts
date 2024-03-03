@@ -1,7 +1,6 @@
 import bn from 'bignumber.js'
 import { ContractFactory, utils, BigNumber } from 'ethers'
 import { ethers, upgrades, network } from 'hardhat'
-import { configs } from '@pancakeswap/common/config'
 import fs from 'fs'
 
 type ContractJson = { abi: any; bytecode: string }
@@ -43,9 +42,9 @@ async function main() {
   const networkName = network.name
   console.log('owner', owner.address)
 
-  const config = configs[networkName as keyof typeof configs]
+  const config_wnative = "0x22f92e5a6219bEf9Aa445EBAfBeB498d2EAdBF01"
 
-  if (!config) {
+  if (!config_wnative) {
     throw new Error(`No config found for network ${networkName}`)
   }
 
@@ -55,7 +54,7 @@ async function main() {
 
   console.log('pancakeV3PoolDeployer_address', deployedContracts, networkName)
   const SwapRouter = new ContractFactory(artifacts.SwapRouter.abi, artifacts.SwapRouter.bytecode, owner)
-  const swapRouter = await SwapRouter.deploy(pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE)
+  const swapRouter = await SwapRouter.deploy(pancakeV3PoolDeployer_address, pancakeV3Factory_address, config_wnative)
 
   // await tryVerify(swapRouter, [pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE])
   console.log('swapRouter', swapRouter.address)
@@ -83,7 +82,7 @@ async function main() {
   const nonfungiblePositionManager = await NonfungiblePositionManager.deploy(
     pancakeV3PoolDeployer_address,
     pancakeV3Factory_address,
-    config.WNATIVE,
+    config_wnative,
     nonfungibleTokenPositionDescriptor.address
   )
 
@@ -104,7 +103,7 @@ async function main() {
   const v3Migrator = await V3Migrator.deploy(
     pancakeV3PoolDeployer_address,
     pancakeV3Factory_address,
-    config.WNATIVE,
+    config_wnative,
     nonfungiblePositionManager.address
   )
   console.log('V3Migrator', v3Migrator.address)
@@ -114,7 +113,7 @@ async function main() {
   console.log('TickLens', tickLens.address)
 
   const QuoterV2 = new ContractFactory(artifacts.QuoterV2.abi, artifacts.QuoterV2.bytecode, owner)
-  const quoterV2 = await QuoterV2.deploy(pancakeV3PoolDeployer_address, pancakeV3Factory_address, config.WNATIVE)
+  const quoterV2 = await QuoterV2.deploy(pancakeV3PoolDeployer_address, pancakeV3Factory_address, config_wnative)
   console.log('QuoterV2', quoterV2.address)
 
   const contracts = {

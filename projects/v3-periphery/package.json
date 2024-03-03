@@ -61,7 +61,8 @@
   },
   "scripts": {
     "compile": "hardhat compile",
-    "deploy:katana": "hardhat run scripts/deploy.ts --network zkatana",
+    "deploy:zkatana": "hardhat run scripts/deploy.ts --network zkatana",
+    "deploy:astarzkevm": "hardhat run scripts/deploy.ts --network astarzkevm",
     "test": "hardhat test"
   }
 }
