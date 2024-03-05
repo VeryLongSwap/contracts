@@ -26,13 +26,23 @@ const astarzkevm: NetworkUserConfig = {
 
 
 const config: HardhatUserConfig = {
-  defaultNetwork: 'hardhat',
+  defaultNetwork: 'astarzkevm',
   networks: {
     ...(process.env.KEY_MAINNET && { astarzkevm }),
     ...(process.env.KEY_TESTNET && { zkatana }),
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY || '',
+    customChains: [
+      {
+        network: "astarzkevm",
+        chainId: 3776,
+        urls: {
+          apiURL: "https://astar-zkevm.explorer.startale.com/api",
+          browserURL: "https://astar-zkevm.explorer.startale.com/"
+        }
+      }
+    ]
   },
   solidity: {
     compilers: [

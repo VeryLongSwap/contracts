@@ -1,63 +1,24 @@
 import { verifyContract } from '@pancakeswap/common/verify'
 import { sleep } from '@pancakeswap/common/sleep'
-import { configs } from '@pancakeswap/common/config'
 
 async function main() {
-  const networkName = network.name
-  const config = configs[networkName as keyof typeof configs]
 
-  if (!config) {
-    throw new Error(`No config found for network ${networkName}`)
-  }
-  const deployedContracts_v3_core = await import(`@pancakeswap/v3-core/deployments/${networkName}.json`)
-  const deployedContracts_v3_periphery = await import(`@pancakeswap/v3-periphery/deployments/${networkName}.json`)
-  const deployedContracts_smart_router = await import(`@pancakeswap/smart-router/deployments/${networkName}.json`)
-
-  // Verify SmartRouterHelper
-  console.log('Verify SmartRouterHelper')
-  await verifyContract(deployedContracts_smart_router.SmartRouterHelper)
+  await verifyContract("0x44bCb48636022453B67295ABafA7Fe6EBf0e2c36")
   await sleep(10000)
 
   // Verify swapRouter
   console.log('Verify swapRouter')
-  await verifyContract(deployedContracts_smart_router.SmartRouter, [
-    config.v2Factory,
-    deployedContracts_v3_core.PancakeV3PoolDeployer,
-    deployedContracts_v3_core.PancakeV3Factory,
-    deployedContracts_v3_periphery.NonfungiblePositionManager,
-    config.stableFactory,
-    config.stableInfo,
-    config.WNATIVE,
+  await verifyContract("0x03efF0c7d42d691991F7EFa7A8F5480622395dEb", [
+    "0x0000000000000000000000000000000000000000",
+    "0xe6106137F52D93C5eAa00d9D89dC7DDFBEAd6Cc1",
+    "0x287fAE8c400603029c27Af0451126b9581B6fcD4",
+    "0xAAE22359B6596208baF67867B46685fcf595EB8e",
+    "0x0000000000000000000000000000000000000000",
+    "0x0000000000000000000000000000000000000000",
+    "0x22f92e5a6219bEf9Aa445EBAfBeB498d2EAdBF01",
   ])
   await sleep(10000)
 
-  // Verify mixedRouteQuoterV1
-  console.log('Verify mixedRouteQuoterV1')
-  await verifyContract(deployedContracts_smart_router.MixedRouteQuoterV1, [
-    deployedContracts_v3_core.PancakeV3PoolDeployer,
-    deployedContracts_v3_core.PancakeV3Factory,
-    config.v2Factory,
-    config.stableFactory,
-    config.WNATIVE,
-  ])
-  await sleep(10000)
-
-  // Verify quoterV2
-  console.log('Verify quoterV2')
-  await verifyContract(deployedContracts_smart_router.QuoterV2, [
-    deployedContracts_v3_core.PancakeV3PoolDeployer,
-    deployedContracts_v3_core.PancakeV3Factory,
-    config.WNATIVE,
-  ])
-  await sleep(10000)
-
-  // Verify tokenValidator
-  console.log('Verify tokenValidator')
-  await verifyContract(deployedContracts_smart_router.TokenValidator, [
-    config.v2Factory,
-    deployedContracts_v3_periphery.NonfungiblePositionManager,
-  ])
-  await sleep(10000)
 }
 
 main()

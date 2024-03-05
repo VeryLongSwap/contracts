@@ -1,5 +1,5 @@
 {
-  "SmartRouter": "0x03efF0c7d42d691991F7EFa7A8F5480622395dEb",
+  "SmartRouter": "https://astar-zkevm.explorer.startale.com/address/0x03efF0c7d42d691991F7EFa7A8F5480622395dEb?tab=contract",
   "SmartRouterHelper": "https://astar-zkevm.explorer.startale.com/address/0x44bCb48636022453B67295ABafA7Fe6EBf0e2c36?tab=contract",
   "MixedRouteQuoterV1": "0x5935Af72499F102e101a999B138f0FB6Eb4A85a2",
   "QuoterV2": "https://astar-zkevm.explorer.startale.com/address/0x25d045cD0a0a96B7e34C2312D1e3BA62379340bf?tab=contract",
