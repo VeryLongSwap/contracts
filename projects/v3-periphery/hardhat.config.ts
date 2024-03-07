@@ -65,6 +65,7 @@ const zkatana: NetworkUserConfig = {
 
 
 export default {
+  defaultNetwork: 'astarzkevm',
   networks: {
     hardhat: {
       allowUnlimitedContractSize: true,
@@ -74,6 +75,16 @@ export default {
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY || '',
+    customChains: [
+      {
+        network: "astarzkevm",
+        chainId: 3776,
+        urls: {
+          apiURL: "https://astar-zkevm.explorer.startale.com/api",
+          browserURL: "https://astar-zkevm.explorer.startale.com/"
+        }
+      }
+    ]
   },
   solidity: {
     compilers: [DEFAULT_COMPILER_SETTINGS],

@@ -61,9 +61,11 @@
   },
   "scripts": {
     "compile": "hardhat compile",
+    "verify:descriptor" : "hardhat run scripts/verifyDescriptor.ts",
     "deploy:zkatana": "hardhat run scripts/deploy.ts --network zkatana",
     "deploy:astarzkevm": "hardhat run scripts/deploy.ts --network astarzkevm",
-    "deploy_multicallv2:astarzkevm": "hardhat run scripts/deploy_multicallv2.ts --network astarzkevm",
+    "deploy:multicallv2:astarzkevm": "hardhat run scripts/deploy_multicallv2.ts --network astarzkevm",
+    "deploy:descriptor:astarzkevm": "hardhat run scripts/deployNonfungibleTokenDescriptorOffChain.ts --network astarzkevm",
     "test": "hardhat test"
   }
 }

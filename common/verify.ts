@@ -19,7 +19,6 @@ export async function tryVerify(contract: Contract, constructorArguments: any[] 
 }
 
 export async function verifyContract(contract: string, constructorArguments: any[] = []) {
-  if (process.env.ETHERSCAN_API_KEY && process.env.NETWORK !== 'hardhat') {
     try {
       console.info('Verifying', contract, constructorArguments)
       const verify = await run('verify:verify', {
@@ -40,5 +39,4 @@ export async function verifyContract(contract: string, constructorArguments: any
         ' error end............................'
       )
     }
-  }
 }
