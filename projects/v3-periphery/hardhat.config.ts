@@ -52,7 +52,7 @@ const DEFAULT_COMPILER_SETTINGS = {
 }
 
 const astarzkevm: NetworkUserConfig = {
-  url: 'https://rpc.startale.com/astar-zkevm/',
+  url: 'https://rpc.startale.com/astar-zkevm?apikey=8P913y62tWiJlrBStnk81hDhjqSfzcoj',
   chainId: 3776,
   accounts: [process.env.KEY_MAINNET!],
 }

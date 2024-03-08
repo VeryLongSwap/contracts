@@ -8,7 +8,7 @@ async function main() {
     v2Factory: '0x0000000000000000000000000000000000000000',
     stableFactory: '0x0000000000000000000000000000000000000000',
     stableInfo: '0x0000000000000000000000000000000000000000',
-    WNATIVE: '0x22f92e5a6219bEf9Aa445EBAfBeB498d2EAdBF01',
+    WNATIVE: '0xE9CC37904875B459Fa5D0FE37680d36F1ED55e38',
   }
   if (!config) {
     throw new Error(`No config found for network ${networkName}`)
@@ -19,7 +19,7 @@ async function main() {
 
   const pancakeV3PoolDeployer_address = v3DeployedContracts.VeryLongPoolDeployer
   const pancakeV3Factory_address = v3DeployedContracts.VeryLongFactory
-  const positionManager_address = "0xc076DED86B7Cb89f4830Ce98543769c47B4290c5"
+  const positionManager_address = "0x6Ceec9fA9269F0807797A9f05522fe70DB8d4f90"
 
   /** SmartRouterHelper */
   console.log('Deploying SmartRouterHelper...')

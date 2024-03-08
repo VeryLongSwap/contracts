@@ -42,7 +42,7 @@ async function main() {
   const networkName = network.name
   console.log('owner', owner.address)
 
-  const config_wnative = "0x22f92e5a6219bEf9Aa445EBAfBeB498d2EAdBF01"
+  const config_wnative = "0xE9CC37904875B459Fa5D0FE37680d36F1ED55e38"
 
   if (!config_wnative) {
     throw new Error(`No config found for network ${networkName}`)
@@ -60,19 +60,18 @@ async function main() {
   console.log('swapRouter', swapRouter.address)
 
   // off chain version
-  const NonfungibleTokenPositionDescriptor = new ContractFactory(
-    artifacts.NonfungibleTokenPositionDescriptorOffChain.abi,
-    artifacts.NonfungibleTokenPositionDescriptorOffChain.bytecode,
-    owner
-  )
-  const baseTokenUri = 'https://nft.pancakeswap.com/v3/'
-  const nonfungibleTokenPositionDescriptor = await upgrades.deployProxy(NonfungibleTokenPositionDescriptor, [
-    baseTokenUri,
-  ])
+/*
+  const NonfungibleTokenPositionDescriptor = await ethers.getContractFactory("NonfungibleTokenPositionDescriptorOffChainVLS")
+  const nonfungibleTokenPositionDescriptor = await NonfungibleTokenPositionDescriptor.deploy()
+  await nonfungibleTokenPositionDescriptor.deployed()
+  console.log('NonfungibleTokenPositionDescriptor deployed at', nonfungibleTokenPositionDescriptor.address)
+*/
+const NonfungibleTokenPositionDescriptor = await ethers.getContractFactory("NonfungibleTokenPositionDescriptorOffChainVLS")
+const nonfungibleTokenPositionDescriptor = await upgrades.deployProxy(NonfungibleTokenPositionDescriptor, [
+  "https://gateway.irys.xyz/9Tz1HZIHrkww9qOzefeT1HtgsePxbj1NKs0JzxCwYbA/"
+])
   await nonfungibleTokenPositionDescriptor.deployed()
   console.log('nonfungibleTokenPositionDescriptor', nonfungibleTokenPositionDescriptor.address)
-
-  // await tryVerify(nonfungibleTokenPositionDescriptor)
 
   const NonfungiblePositionManager = new ContractFactory(
     artifacts.NonfungiblePositionManager.abi,
@@ -96,8 +95,6 @@ async function main() {
 
   const pancakeInterfaceMulticall = await PancakeInterfaceMulticall.deploy()
   console.log('PancakeInterfaceMulticall', pancakeInterfaceMulticall.address)
-
-  // await tryVerify(pancakeInterfaceMulticall)
 
   const V3Migrator = new ContractFactory(artifacts.V3Migrator.abi, artifacts.V3Migrator.bytecode, owner)
   const v3Migrator = await V3Migrator.deploy(

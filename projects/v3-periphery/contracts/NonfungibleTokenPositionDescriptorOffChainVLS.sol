@@ -12,8 +12,6 @@ contract NonfungibleTokenPositionDescriptorOffChainVLS is INonfungibleTokenPosit
     using StringsUpgradeable for uint256;
 
     string private _baseTokenURI;
-    string public _vlsNFTBaseURI = "https://gateway.irys.xyz/9Tz1HZIHrkww9qOzefeT1HtgsePxbj1NKs0JzxCwYbA/";
-
     string private constant _BASE_EXTENSION = '.json';
 
     function initialize(string calldata baseTokenURI) external initializer {
@@ -27,6 +25,6 @@ contract NonfungibleTokenPositionDescriptorOffChainVLS is INonfungibleTokenPosit
         override
         returns (string memory)
     {
-        return string(abi.encodePacked("https://gateway.irys.xyz/9Tz1HZIHrkww9qOzefeT1HtgsePxbj1NKs0JzxCwYbA/", tokenId.toString(), _BASE_EXTENSION));
+        return string(abi.encodePacked(_baseTokenURI, tokenId.toString(), _BASE_EXTENSION));
     }
 }

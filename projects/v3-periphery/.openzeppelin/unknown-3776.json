@@ -14,6 +14,11 @@
       "address": "0x75AeAA52735c3804787c1B07De67eBA0319211d8",
       "txHash": "0x35e7fa8272bd9d0cf1dc6049661bcb99ea16066e185bb2155e0fc91e41447532",
       "kind": "transparent"
+    },
+    {
+      "address": "0x1784ab6C9C6e7ef31036eC73067A07A7CD2192F4",
+      "txHash": "0x044fdccaccfc429375c93f91910255b3e3f6e06af7db818d78d087ae4963e570",
+      "kind": "transparent"
     }
   ],
   "impls": {
@@ -46,6 +51,49 @@
             "type": "t_string_storage",
             "contract": "NonfungibleTokenPositionDescriptorOffChain",
             "src": "contracts/NonfungibleTokenPositionDescriptorOffChain.sol:14"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "017f542c3552d5f614076200da4dfcc946897944977c3f157e5e2c7e8110c1df": {
+      "address": "0x82e40adfea98ddFceeeF10bDe820DB0Be1D7EceB",
+      "txHash": "0x957b782a102e13cf5ef9e091635f30a3d58234d555d57f5e2d752379364824a1",
+      "layout": {
+        "solcVersion": "0.7.6",
+        "storage": [
+          {
+            "label": "_initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:25"
+          },
+          {
+            "label": "_initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "@openzeppelin/contracts-upgradeable/proxy/Initializable.sol:30"
+          },
+          {
+            "label": "_baseTokenURI",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_string_storage",
+            "contract": "NonfungibleTokenPositionDescriptorOffChainVLS",
+            "src": "contracts/NonfungibleTokenPositionDescriptorOffChainVLS.sol:14"
           }
         ],
         "types": {
